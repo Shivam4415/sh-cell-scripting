@@ -94,13 +94,48 @@ for NAME in $NAMES
 done
 
 
-touch 1.txt 2.txt 3.txt
 
 # FOR LOOP TO RENAME FILES
-FILES=$(ls *.txt)
-NEW="new"
-for FILE in $FILES  
+# touch 1.txt 2.txt 3.txt
+
+# FILES=$(ls *.txt)
+# NEW="new"
+# for FILE in $FILES  
+#   do
+#     echo "Renaming $FILE to new-$FILE"
+#     # tO actually rename we use mv command
+#     mv $FILE $NEW-$FILE
+# done
+
+
+# WHILE LOOP - READ THROUGH A FILE LINE BY LINE
+# -r: read
+# < : done untill all lines are executed
+LINE=1
+while read -r CURRENT_LINE
   do
-    echo "Renaming $FILE to new-$FILE"
-    mv $FILE $NEW-$FILE
-done
+    echo "$LINE: $CURRENT_LINE"
+    ((LINE++))
+done < "./new-1.txt"
+
+
+# FUNCTION
+# function sayHello() {
+#   echo "Hello World"
+# }
+# sayHello
+
+# FUNCTION WITH PARAMS
+# function greet() {
+#   echo "Hello, I am $1 and I am $2"
+# }
+
+# greet "Brad" "36"
+
+
+# CREATE FOLDER AND WRITE TO A FILE
+# >> : To write to that specific file.
+mkdir hello
+touch "hello/world.txt"
+echo "Hello World" >> "hello/world.txt"
+echo "Created hello/world.txt"
